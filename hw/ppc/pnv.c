@@ -731,12 +731,18 @@ static void pnv_init(MachineState *machine)
     char *chip_typename;
     DriveInfo *pnor = drive_get(IF_MTD, 0, 0);
     DeviceState *dev;
+    bool hostboot_mode = !!pnv->fw_load_addr;
 
     /* allocate RAM */
-    if (machine->ram_size < (1 * GiB)) {
+    if (!hostboot_mode && machine->ram_size < (1 * GiB)) {
         warn_report("skiboot may not work with < 1GB of RAM");
     }
-    memory_region_add_subregion(get_system_memory(), 0, machine->ram);
+
+    if (hostboot_mode && machine->ram_size < (10 * MiB)) {
+        warn_report("hostboot may not work with < 10MB of RAM");
+    }
+    memory_region_add_subregion(get_system_memory(), pnv->fw_load_addr,
+                                machine->ram);
 
     /*
      * Create our simple PNOR device
