@@ -54,6 +54,7 @@
 #include "exec/ramlist.h"
 #include "hw/intc/intc.h"
 #include "hw/rdma/rdma.h"
+#include "hw/nmi.h"
 #include "migration/snapshot.h"
 #include "migration/misc.h"
 
