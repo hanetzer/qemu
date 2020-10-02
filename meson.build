@@ -965,6 +965,7 @@ subdir('io')
 subdir('chardev')
 subdir('fsdev')
 subdir('libdecnumber')
+subdir('libxz')
 subdir('target')
 subdir('dump')
 
