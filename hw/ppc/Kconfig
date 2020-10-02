@@ -31,6 +31,7 @@ config POWERNV
     select FDT_PPC
     select PCI_EXPRESS
     select MSI_NONBROKEN
+    select PCA9552
 
 config PPC405
     bool
