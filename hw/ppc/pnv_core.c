@@ -53,7 +53,7 @@ static void pnv_core_cpu_reset(PnvCore *pc, PowerPCCPU *cpu)
      * system and it can be any.
      */
     env->gpr[3] = PNV_FDT_ADDR;
-    env->nip = 0x10;
+    env->nip = 0x0;
     env->msr |= MSR_HVB; /* Hypervisor mode */
 
     env->spr[SPR_HRMOR] = pc->hrmor;

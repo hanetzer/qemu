@@ -258,7 +258,7 @@ static void pnv_pnor_realize(DeviceState *dev, Error **errp)
         }
 
         /* Read partitions to validate contents */
-        pnv_pnor_find_skiboot(s, errp);
+        /* pnv_pnor_find_skiboot(s, errp); */
     } else {
         s->storage = blk_blockalign(NULL, s->size);
         memset(s->storage, 0xFF, s->size);
